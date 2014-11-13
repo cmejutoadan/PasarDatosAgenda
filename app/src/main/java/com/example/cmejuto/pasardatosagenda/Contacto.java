@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by cmejuto on 07/11/2014.
  */
 public class Contacto implements Serializable { //tenemos que implementar serializable para poder pasar el objeto de una activity a otra
-    private String nombre; //XXXX
+    private String nombre;
     private String telefono;
 
     public String getNombre() {

@@ -1,6 +1,7 @@
 package com.example.cmejuto.pasardatosagenda;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.util.Log;
@@ -16,17 +17,22 @@ import java.util.ArrayList;
 public class MyActivity2 extends Activity {
 
     Button bOk;
+    Contacto contacto;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_activity2);
 
-        //recogemos el string nombre
-        String nombre2 = getIntent().getExtras().getString("edNombre");
+        //recogemos el objeto
+        contacto = (Contacto) getIntent().getSerializableExtra("contacto");
         //y lo metemos donde corresponde
-        EditText entradaNombre2 = (EditText)findViewById(R.id.entradaNombre2);
-        entradaNombre2.setText(nombre2);
+        EditText entradaNombre2 = (EditText) findViewById(R.id.entradaNombre2);
+        entradaNombre2.setText(contacto.getNombre());
+        EditText entradaTlf2 = (EditText) findViewById(R.id.entradaTlf2);
+        entradaTlf2.setText(contacto.getTelefono());
         bOk = (Button) findViewById(R.id.bOk); //boton de ok
+
         //creamos el listener del botón OK
         bOk.setOnClickListener(new View.OnClickListener() {
 
@@ -34,19 +40,15 @@ public class MyActivity2 extends Activity {
             public void onClick(View v) {
 
                 //recogemos los campos a cubrir
-               EditText entradaNombre = (EditText) findViewById(R.id.entradaNombre);
-                EditText entradaTlf = (EditText) findViewById(R.id.entradaTlf);
-               String nombre = entradaNombre.getText().toString();
-                String tlf = entradaTlf.getText().toString();
-                Log.d("MiDEBUG", nombre); //esto es para hacer un log de nombres. nos indica lo que vamos añadiendo en eeste camp
-/*
-                //creamos el objeto y lo metemos en el array
-                Contacto contacto = new Contacto(nombre, tlf);
-                aContactos.add(contacto);
-*/
-                //limpiamos los campos
-                entradaNombre.setText("");
-                entradaTlf.setText("");
+                EditText entradaNombre2 = (EditText) findViewById(R.id.entradaNombre2);
+                EditText entradaTlf2 = (EditText) findViewById(R.id.entradaTlf2);
+                contacto.setNombre(entradaNombre2.getText().toString());//modificamos el objeto
+                contacto.setTelefono(entradaTlf2.getText().toString()); //modificamos el objeto
+
+                Intent intent = new Intent(MyActivity2.this, MyActivity.class);
+                intent.putExtra("contacto", contacto);
+                setResult(RESULT_OK, intent);
+                finish();
             }
 
         });

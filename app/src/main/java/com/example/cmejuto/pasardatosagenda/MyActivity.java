@@ -1,14 +1,17 @@
 package com.example.cmejuto.pasardatosagenda;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 import java.util.ArrayList;
@@ -17,6 +20,7 @@ import java.util.ArrayList;
 public class MyActivity extends Activity {
 
     ArrayList<Contacto> aContactos;
+    Contacto contacto;
     Button botonAñadir;
     Button botonEditar;
     EditText entradaNombre;
@@ -47,12 +51,12 @@ public class MyActivity extends Activity {
                 Log.d("MiDEBUG", nombre); //esto es para hacer un log de nombres. nos indica lo que vamos añadiendo en eeste camp
 
                 //creamos el objeto y lo metemos en el array
-                Contacto contacto = new Contacto(nombre, tlf);
+                contacto = new Contacto(nombre, tlf);
                 aContactos.add(contacto);
 
                 //limpiamos los campos
-                entradaNombre.setText("");
-                entradaTlf.setText("");
+                // entradaNombre.setText("");
+                // entradaTlf.setText("");
             }
 
         });
@@ -67,16 +71,42 @@ public class MyActivity extends Activity {
                 nombre = entradaNombre.getText().toString();
                 Log.d("MiDEBUG2", nombre);
 
-                //para mandar a la clase salutation
+                //para mandar a la clase salutation2
                 Intent intent = new Intent(MyActivity.this, MyActivity2.class);
                 //lo mandamos a la clase 2, mandamos el arrayList y llamamos a la clase
-                intent.putExtra("edNombre", nombre); //editNombre es el identificador
-                //intent.putExtra("aContactos", aContactos); //aContactos es el identificador
+                intent.putExtra("contacto", contacto); //mandar un objeto -- "contacto" es el identificador
+                //intent.putExtra("aContactos", aContactos); //mandar un string -- aContactos es el identificador
+                startActivityForResult(intent, 1);//1 es un request code. es como una bandera. la recogemos en onactivityresult. en el método onactivity result esperaremos a que me devuelva lo mismo
 
-                startActivity(intent);
+
             }
         });
+
+
     }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent intento) {
+
+        if (requestCode == 1 && intento != null) { //
+            if (resultCode == RESULT_OK) {
+                //traemos el objeto de la myActivity2
+                contacto = (Contacto) intento.getSerializableExtra("contacto");
+                String msg = getString(R.string.tostada) + contacto.getNombre() +"   "+ contacto.getTelefono();
+                //y llamamos a la tostada pasándole el string que hemos creado
+                showToast(msg);
+                return;
+            }
+        }
+
+    }
+
+    protected void showToast(String msg) {
+        Context contexto = getApplicationContext();
+        int duracion = Toast.LENGTH_LONG;
+        Toast tostada = Toast.makeText(contexto, msg, duracion);
+        tostada.show();
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
