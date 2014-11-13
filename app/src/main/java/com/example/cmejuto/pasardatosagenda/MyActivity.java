@@ -84,7 +84,7 @@ public class MyActivity extends Activity {
 
 
     }
-
+    //creamos este método para recoger de la activity2
     protected void onActivityResult(int requestCode, int resultCode, Intent intento) {
 
         if (requestCode == 1 && intento != null) { //

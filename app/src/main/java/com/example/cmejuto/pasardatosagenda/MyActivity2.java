@@ -45,9 +45,10 @@ public class MyActivity2 extends Activity {
                 contacto.setNombre(entradaNombre2.getText().toString());//modificamos el objeto
                 contacto.setTelefono(entradaTlf2.getText().toString()); //modificamos el objeto
 
+                //y los mandamos a la activity1. Ojo!! usamos setResult y le mandamos un ok y el intento
                 Intent intent = new Intent(MyActivity2.this, MyActivity.class);
                 intent.putExtra("contacto", contacto);
-                setResult(RESULT_OK, intent);
+                setResult(RESULT_OK, intent); //llamamos al protected void onActivityResult. Ojo!! el número de parámetros no coincide pero se hace así
                 finish();
             }
 
