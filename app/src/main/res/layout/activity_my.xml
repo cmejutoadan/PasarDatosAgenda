@@ -1,0 +1,49 @@
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/textViewNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/name" />
+
+    <EditText
+        android:id="@+id/entradaNombre"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/textViewtlf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tlf" />
+
+    <EditText
+        android:id="@+id/entradaTlf"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/añadir"
+        android:id="@+id/bAñadir"
+        android:gravity="center"
+        android:layout_gravity="" />
+    <!-- gravity es el gravity texto del botón-->
+    <!-- layout_gravity es del propio botón-->
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/editar"
+        android:id="@+id/bEditar"
+        android:gravity="center"
+        android:layout_gravity="" />
+</LinearLayout>
