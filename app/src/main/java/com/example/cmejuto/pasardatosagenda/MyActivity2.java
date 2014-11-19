@@ -42,8 +42,10 @@ public class MyActivity2 extends Activity {
                 //recogemos los campos a cubrir
                 EditText entradaNombre2 = (EditText) findViewById(R.id.entradaNombre2);
                 EditText entradaTlf2 = (EditText) findViewById(R.id.entradaTlf2);
-                contacto.setNombre(entradaNombre2.getText().toString());//modificamos el objeto
-                contacto.setTelefono(entradaTlf2.getText().toString()); //modificamos el objeto
+
+                contacto= new Contacto(entradaNombre2.getText().toString(), entradaTlf2.getText().toString());
+            /*    contacto.setNombre(entradaNombre2.getText().toString());//modificamos el objeto
+                contacto.setTelefono(entradaTlf2.getText().toString()); //modificamos el objeto*/
 
                 //y los mandamos a la activity1. Ojo!! usamos setResult y le mandamos un ok y el intento
                 Intent intent = new Intent(MyActivity2.this, MyActivity.class);
