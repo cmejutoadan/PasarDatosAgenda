@@ -12,5 +12,6 @@
     <string name="ok">OK</string>
     <string name="tlf">Teléfono</string>
     <string name="tostada">El contacto ha sido actualizado a:</string>
+    <string name="title_activity_my_activity__intermedia">MyActivity_Intermedia</string>
 
 </resources>

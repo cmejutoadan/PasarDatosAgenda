@@ -19,14 +19,16 @@ import java.util.ArrayList;
 
 public class MyActivity extends Activity {
 
-    ArrayList<Contacto> aContactos;
+    ArrayList<Contacto> aContactos = new ArrayList<Contacto>();
     Contacto contacto;
+    //Contacto contacto2;
     Button botonAñadir;
     Button botonEditar;
     EditText entradaNombre;
     EditText entradaTlf;
-    String nombre;
+    String nombre;//lo vamos a usar para buscar en el arrayList y actualizarlo
     String tlf;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +44,7 @@ public class MyActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                aContactos = new ArrayList<Contacto>();
+
                 //recogemos los campos a cubrir
                 entradaNombre = (EditText) findViewById(R.id.entradaNombre);
                 entradaTlf = (EditText) findViewById(R.id.entradaTlf);
@@ -52,7 +54,8 @@ public class MyActivity extends Activity {
 
                 //creamos el objeto y lo metemos en el array
                 contacto = new Contacto(nombre, tlf);
-                aContactos.add(contacto);
+                //llamamos al método para que añade al array
+                añadirArray(contacto);
 
                 //limpiamos los campos
                 // entradaNombre.setText("");
@@ -78,23 +81,58 @@ public class MyActivity extends Activity {
                 //intent.putExtra("aContactos", aContactos); //mandar un string -- aContactos es el identificador
                 startActivityForResult(intent, 1);//1 es un request code. es como una bandera. la recogemos en onactivityresult. en el método onactivity result esperaremos a que me devuelva lo mismo
 
+                //guardo el nombre del contacto que voy a editar para buscarlo en el arrayList
+
 
             }
         });
 
 
     }
-    //creamos este método para recoger de la activity2
+
+    //metodo para añadir al arrayList
+    public void añadirArray(Contacto contacto) {
+        aContactos.add(this.contacto);
+    }
+
+    public String modificarArray(Contacto contacto, String nombre) {
+        String mensaje = "";
+
+        for (int i = 0; i < aContactos.size(); i++) {
+            if (aContactos.get(i).getNombre().compareToIgnoreCase(nombre) == 0) {
+
+                Contacto c = new Contacto(contacto.getNombre(),contacto.getTelefono());
+                aContactos.set(i, c);
+               // aContactos.get(i).setNombre(contacto.getNombre());
+               // aContactos.get(i).setTelefono(contacto.getTelefono());
+                mensaje = aContactos.get(i).getNombre() + " " + aContactos.get(i).getTelefono();
+                Log.d("LOG", mensaje);
+                //Toast toast(getApplicationContext(),aContactos.get(i).getNombre(), Toast.LENGTH_LONG).show();
+
+
+            }
+        }
+        return mensaje;
+    }
+
+
+
+
+    //Recogemos de la activity2
     protected void onActivityResult(int requestCode, int resultCode, Intent intento) {
 
         if (requestCode == 1 && intento != null) { //
             if (resultCode == RESULT_OK) {
                 //traemos el objeto de la myActivity2
                 contacto = (Contacto) intento.getSerializableExtra("contacto");
-                String msg = getString(R.string.tostada) + contacto.getNombre() +"   "+ contacto.getTelefono();
+                //String msg = getString(R.string.tostada) + contacto.getNombre() + "   " + contacto.getTelefono();
+                //y modificamos el arraylist
+                String mensaje = modificarArray(contacto, nombre);
                 //y llamamos a la tostada pasándole el string que hemos creado
-                showToast(msg);
-                return;
+                Toast.makeText(getApplicationContext(),"el contacto ha sido actualizado a: "+mensaje, Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(),aContactos.get(i).getNombre(), Toast.LENGTH_LONG).show();
+                //showToast(msg);
+                //return;
             }
         }
 
