@@ -9,6 +9,10 @@ public class Contacto implements Serializable { //tenemos que implementar serial
     private String nombre;
     private String telefono;
 
+    public Contacto() {
+
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -30,5 +34,11 @@ public class Contacto implements Serializable { //tenemos que implementar serial
         this.telefono = telefono;
 
 
+    }
+//ojo!! para usar el layout simple_list_item_1 hay que sobreescribir este método!!!
+    @Override
+    public String toString() {
+
+        return nombre +" : "+telefono;
     }
 }

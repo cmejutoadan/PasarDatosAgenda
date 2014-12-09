@@ -24,7 +24,7 @@ public class MyActivity2 extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_activity2);
 
-        //recogemos el objeto
+        //recogemos el objeto que viene de la INTERMEDIA
         contacto = (Contacto) getIntent().getSerializableExtra("contacto");
         //y lo metemos donde corresponde
         EditText entradaNombre2 = (EditText) findViewById(R.id.entradaNombre2);
@@ -43,12 +43,12 @@ public class MyActivity2 extends Activity {
                 EditText entradaNombre2 = (EditText) findViewById(R.id.entradaNombre2);
                 EditText entradaTlf2 = (EditText) findViewById(R.id.entradaTlf2);
 
-                contacto= new Contacto(entradaNombre2.getText().toString(), entradaTlf2.getText().toString());
-            /*    contacto.setNombre(entradaNombre2.getText().toString());//modificamos el objeto
-                contacto.setTelefono(entradaTlf2.getText().toString()); //modificamos el objeto*/
+                contacto = new Contacto(entradaNombre2.getText().toString(), entradaTlf2.getText().toString());
 
-                //y los mandamos a la activity1. Ojo!! usamos setResult y le mandamos un ok y el intento
-                Intent intent = new Intent(MyActivity2.this, MyActivity.class);
+
+                //y los mandamos a la INTERMEDIA. Ojo!! usamos setResult y le mandamos un ok y el intento
+                Log.d("MENSJE",contacto.toString());
+                Intent intent = new Intent(MyActivity2.this, MyActivity_Intermedia.class);
                 intent.putExtra("contacto", contacto);
                 setResult(RESULT_OK, intent); //llamamos al protected void onActivityResult. Ojo!! el número de parámetros no coincide pero se hace así
                 finish();

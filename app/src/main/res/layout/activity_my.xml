@@ -42,8 +42,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/editar"
-        android:id="@+id/bEditar"
+        android:text="@string/mostrar"
+        android:id="@+id/bMostrar"
         android:gravity="center"
         android:layout_gravity="" />
 </LinearLayout>
