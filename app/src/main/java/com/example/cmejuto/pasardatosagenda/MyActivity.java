@@ -111,8 +111,7 @@ public class MyActivity extends Activity {
 
                 Contacto c = new Contacto(contacto.getNombre(), contacto.getTelefono());
                 aContactos.set(i, c);
-                // aContactos.get(i).setNombre(contacto.getNombre());
-                // aContactos.get(i).setTelefono(contacto.getTelefono());
+
                 mensaje = aContactos.get(i).getNombre() + " " + aContactos.get(i).getTelefono();
                 Log.d("LOG", mensaje);
                 //Toast toast(getApplicationContext(),aContactos.get(i).getNombre(), Toast.LENGTH_LONG).show();
