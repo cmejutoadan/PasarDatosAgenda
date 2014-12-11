@@ -65,7 +65,7 @@ public class MyActivity_Intermedia extends ListActivity {
     //recogemos el objeto contacto  y lo modificamos en el array
     protected void onActivityResult(int requestCode, int resultCode, Intent intento) {
 
-        if (requestCode == 1 && intento != null) { //
+       /* if (requestCode == 1 && intento != null) { //
             if (resultCode == RESULT_OK) {
                 //traemos el objeto
                 Contacto contacto = (Contacto) intento.getSerializableExtra("contacto");
@@ -78,23 +78,24 @@ public class MyActivity_Intermedia extends ListActivity {
                 //llamamos de nuevo al listAdapter para que muestre el array modificado
                 setListAdapter(new ArrayAdapter(this, android.R.layout.simple_list_item_1, aContactos));
 
-                //    //traemos el objeto de la myActivity2
-                //    contacto = (Contacto) intento.getSerializableExtra("contacto");
-                //  //String msg = getString(R.string.tostada) + contacto.getNombre() + "   " + contacto.getTelefono();
-                //    //y modificamos el arraylist
-                //    String mensaje = modificarArray(contacto, nombre);
-                //    //y llamamos a la tostada pasándole el string que hemos creado
-                //    Toast.makeText(getApplicationContext(), "el contacto ha sido actualizado a: " + mensaje, Toast.LENGTH_LONG).show();
-                //    //Toast.makeText(getApplicationContext(),aContactos.get(i).getNombre(), Toast.LENGTH_LONG).show();
-                //    //showToast(msg);
-                //    //return;
-
-                //    //limpiamos los campos
-                //    entradaNombre.setText("");
-                //    entradaTlf.setText("");
-
             }
+        }*/
+        if (requestCode==1 && resultCode==RESULT_OK)
+        {
+            //Log.d("",""+(Contacto)intento.getSerializableExtra("contacto"));
+
+            //traemos el objeto
+            Contacto contacto = (Contacto) intento.getSerializableExtra("contacto");
+
+            //llamamos al método que modifica el array
+            modificaArray(pos, contacto, aContactos);
+
+           // Log.d("MENSJE", contacto.toString());
+
+            //llamamos de nuevo al listAdapter para que muestre el array modificado
+            setListAdapter(new ArrayAdapter(this, android.R.layout.simple_list_item_1, aContactos));
         }
+
 
     }
 
@@ -118,8 +119,8 @@ public class MyActivity_Intermedia extends ListActivity {
     //modificar array
     public void modificaArray(int pos, Contacto contacto, ArrayList<Contacto> aContactos) {
         //busca el contacto en el array. Si lo encuentra es para eliminar. si no lo encuentra, es para editar.
-        for (Contacto c : aContactos) {
-            if (contacto.getNombre().equalsIgnoreCase(aContactos.get(i).getNombre())) {
+        for (int var =0; var<aContactos.size();var++) {
+            if (contacto.getNombre().equalsIgnoreCase("borrado")) {
                 aContactos.remove(pos);
             } else {
                 aContactos.set(pos, contacto);

@@ -54,7 +54,8 @@ public class MyActivity2 extends Activity {
                 Intent intent = new Intent(MyActivity2.this, MyActivity_Intermedia.class);
                 intent.putExtra("contacto", contacto);
                  //llamamos al protected void onActivityResult. Ojo!! el número de parámetros no coincide pero se hace así
-                 startActivityForResult(intent, 1);
+                 //startActivityForResult(intent, 1);
+                 setResult(RESULT_OK, intent);
                  finish();
             }
 
@@ -82,10 +83,18 @@ public class MyActivity2 extends Activity {
             }
 
         });
-
-
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent i) {
+        if (resultCode == RESULT_OK && requestCode ==1){
+            Contacto c = (Contacto)i.getSerializableExtra("contacto");
+            Intent intento = new Intent(MyActivity2.this, MyActivity_Intermedia.class);
+            intento.putExtra("contacto",c);
+            setResult(RESULT_OK, intento);
+            finish();
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

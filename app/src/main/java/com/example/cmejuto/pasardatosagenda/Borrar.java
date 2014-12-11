@@ -43,8 +43,11 @@ public class Borrar extends Activity {
                 Toast.makeText(getApplicationContext(), "Contacto eliminado", Toast.LENGTH_LONG).show();
                 //y mandamos el contacto INTERMEDIA para actualizar el arraylist. Ojo!! usamos setResult y le mandamos un ok y el intento
                 Log.d("MENSJE", contacto.toString());
-                Intent intent3 = new Intent(Borrar.this, MyActivity_Intermedia.class);
+                Intent intent3 = new Intent(Borrar.this, MyActivity2.class);
+                contacto = new Contacto("borrado", "0");
                 intent3.putExtra("contacto", contacto);
+
+                //startActivity(intent3);
                 setResult(RESULT_OK, intent3); //llamamos al protected void onActivityResult. Ojo!! el número de parámetros no coincide pero se hace así
                 finish();
             }
