@@ -68,16 +68,16 @@ public class MyActivity2 extends Activity {
             public void onClick(View v) {
 
                 //recogemos los campos a cubrir
-                EditText entradaNombre2 = (EditText) findViewById(R.id.entradaNombre2);
-                EditText entradaTlf2 = (EditText) findViewById(R.id.entradaTlf2);
+                //EditText entradaNombre2 = (EditText) findViewById(R.id.entradaNombre2);
+                //EditText entradaTlf2 = (EditText) findViewById(R.id.entradaTlf2);
 
-                Contacto contactoB = new Contacto(entradaNombre2.getText().toString(), entradaTlf2.getText().toString());
+                //Contacto contactoB = new Contacto(entradaNombre2.getText().toString(), entradaTlf2.getText().toString());
 
 
                 //y los mandamos a la activity BORRAR.
                 //Log.d("MENSJE",contactoB.toString());
                 Intent intent2 = new Intent(MyActivity2.this, Borrar.class);
-                intent2.putExtra("contactoB", contactoB);
+                intent2.putExtra("contacto", contacto);
                 startActivityForResult(intent2, 1);
 
             }

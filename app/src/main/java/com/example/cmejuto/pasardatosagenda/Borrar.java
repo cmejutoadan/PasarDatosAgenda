@@ -24,11 +24,11 @@ public class Borrar extends Activity {
         setContentView(R.layout.activity_borrar);
 
         //recogemos el objeto que viene de MyActivity2 y que vamos a borrar
-        contacto = (Contacto) getIntent().getSerializableExtra("contactoB");
+        contacto = (Contacto) getIntent().getSerializableExtra("contacto");
         //y lo metemos donde corresponde
-        EditText entradaNombreB = (EditText) findViewById(R.id.entradaNombre2);
-        entradaNombreB.setText(contacto.getNombre());
-        EditText entradaTlfB = (EditText) findViewById(R.id.entradaTlf2);
+        EditText entradaNombre = (EditText) findViewById(R.id.entradaNombre);
+        entradaNombre.setText(contacto.getNombre());
+        EditText entradaTlfB = (EditText) findViewById(R.id.entradaTlfB);
         entradaTlfB.setText(contacto.getTelefono());
 
         //creamos el botón de confirmar eliminar y el listener del botón
