@@ -24,7 +24,7 @@ public class MyActivity_Intermedia extends ListActivity {
     ArrayList<Contacto> aContactos = new ArrayList();
     Intent intento = new Intent();
     Contacto c = new Contacto();
-    int pos;
+    int pos, i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,12 +62,12 @@ public class MyActivity_Intermedia extends ListActivity {
 
     }
 
-    //recogemos el objeto contacto de la ACIVITY2 y lo modificamos en el array
+    //recogemos el objeto contacto  y lo modificamos en el array
     protected void onActivityResult(int requestCode, int resultCode, Intent intento) {
 
         if (requestCode == 1 && intento != null) { //
             if (resultCode == RESULT_OK) {
-                //traemos el objeto de activity 2
+                //traemos el objeto
                 Contacto contacto = (Contacto) intento.getSerializableExtra("contacto");
 
                 //llamamos al método que modifica el array
@@ -117,7 +117,15 @@ public class MyActivity_Intermedia extends ListActivity {
 
     //modificar array
     public void modificaArray(int pos, Contacto contacto, ArrayList<Contacto> aContactos) {
-        aContactos.set(pos, contacto);
+        //busca el contacto en el array. Si lo encuentra es para eliminar. si no lo encuentra, es para editar.
+        for (Contacto c : aContactos) {
+            if (contacto.getNombre().equalsIgnoreCase(aContactos.get(i).getNombre())) {
+                aContactos.remove(pos);
+            } else {
+                aContactos.set(pos, contacto);
+            }
+        }
+
     }
 
 

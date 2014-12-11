@@ -1,0 +1,39 @@
+<LinearLayout
+
+android:orientation="vertical"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+xmlns:android="http://schemas.android.com/apk/res/android">
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/nameB"
+    android:id="@+id/textViewB" />
+
+<EditText
+    android:id="@+id/entradaNombreB"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"/>
+<TextView
+    android:id="@+id/textViewtlfB"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/tlf" />
+
+<EditText
+    android:id="@+id/entradaTlfB"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/borrar"
+        android:id="@+id/bEliminar"
+        android:gravity="center"
+        android:layout_gravity="" />
+
+</LinearLayout>

@@ -24,6 +24,10 @@
             android:name=".MyActivity_Intermedia"
             android:label="@string/title_activity_my_activity__intermedia" >
         </activity>
+        <activity
+            android:name=".Borrar"
+            android:label="@string/title_activity_borrar" >
+        </activity>
     </application>
 
 </manifest>

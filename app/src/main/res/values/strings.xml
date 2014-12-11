@@ -14,5 +14,8 @@
     <string name="tostada">El contacto ha sido actualizado a:</string>
     <string name="title_activity_my_activity__intermedia">MyActivity_Intermedia</string>
     <string name="mostrar">Mostrar</string>
+    <string name="borrar">Borrar</string>
+    <string name="title_activity_borrar">Borrar</string>
+    <string name="nameB">Nombre</string>
 
 </resources>

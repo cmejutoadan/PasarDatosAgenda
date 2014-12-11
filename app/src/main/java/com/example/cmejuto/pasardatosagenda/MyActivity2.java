@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class MyActivity2 extends Activity {
 
     Button bOk;
+    Button bElim;
     Contacto contacto;
 
     @Override
@@ -31,13 +32,15 @@ public class MyActivity2 extends Activity {
         entradaNombre2.setText(contacto.getNombre());
         EditText entradaTlf2 = (EditText) findViewById(R.id.entradaTlf2);
         entradaTlf2.setText(contacto.getTelefono());
+
         bOk = (Button) findViewById(R.id.bOk); //boton de ok
+        bElim = (Button) findViewById(R.id.bBorrar); //boton de eliminar
 
         //creamos el listener del botón OK
         bOk.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
+                @Override
+                public void onClick(View v) {
 
                 //recogemos los campos a cubrir
                 EditText entradaNombre2 = (EditText) findViewById(R.id.entradaNombre2);
@@ -50,11 +53,34 @@ public class MyActivity2 extends Activity {
                 Log.d("MENSJE",contacto.toString());
                 Intent intent = new Intent(MyActivity2.this, MyActivity_Intermedia.class);
                 intent.putExtra("contacto", contacto);
-                setResult(RESULT_OK, intent); //llamamos al protected void onActivityResult. Ojo!! el número de parámetros no coincide pero se hace así
-                finish();
+                 //llamamos al protected void onActivityResult. Ojo!! el número de parámetros no coincide pero se hace así
+
             }
 
         });
+
+        //creamos el listener del botón BORRAR
+        bElim.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                //recogemos los campos a cubrir
+                EditText entradaNombre2 = (EditText) findViewById(R.id.entradaNombre2);
+                EditText entradaTlf2 = (EditText) findViewById(R.id.entradaTlf2);
+
+                Contacto contactoB = new Contacto(entradaNombre2.getText().toString(), entradaTlf2.getText().toString());
+
+
+                //y los mandamos a la activity BORRAR. Ojo!! usamos setResult y le mandamos un ok y el intento
+                //Log.d("MENSJE",contactoB.toString());
+                Intent intent2 = new Intent(MyActivity2.this, Borrar.class);
+                intent2.putExtra("contactoB", contactoB);
+
+            }
+
+        });
+
 
     }
 
