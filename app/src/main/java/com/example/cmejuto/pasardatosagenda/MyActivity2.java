@@ -54,7 +54,7 @@ public class MyActivity2 extends Activity {
                 Intent intent = new Intent(MyActivity2.this, MyActivity_Intermedia.class);
                 intent.putExtra("contacto", contacto);
                  //llamamos al protected void onActivityResult. Ojo!! el número de parámetros no coincide pero se hace así
-                 setResult(RESULT_OK, intent);
+                 startActivityForResult(intent, 1);
                  finish();
             }
 
