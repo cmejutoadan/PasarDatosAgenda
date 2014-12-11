@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-
+//commit 1 examen
 public class MyActivity extends Activity {
 
     public static ArrayList<Contacto> aContactos = new ArrayList<Contacto>();
