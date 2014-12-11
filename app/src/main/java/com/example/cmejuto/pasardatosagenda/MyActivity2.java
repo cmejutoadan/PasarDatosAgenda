@@ -54,7 +54,8 @@ public class MyActivity2 extends Activity {
                 Intent intent = new Intent(MyActivity2.this, MyActivity_Intermedia.class);
                 intent.putExtra("contacto", contacto);
                  //llamamos al protected void onActivityResult. Ojo!! el número de parámetros no coincide pero se hace así
-
+                 setResult(RESULT_OK, intent);
+                 finish();
             }
 
         });
@@ -72,10 +73,11 @@ public class MyActivity2 extends Activity {
                 Contacto contactoB = new Contacto(entradaNombre2.getText().toString(), entradaTlf2.getText().toString());
 
 
-                //y los mandamos a la activity BORRAR. Ojo!! usamos setResult y le mandamos un ok y el intento
+                //y los mandamos a la activity BORRAR.
                 //Log.d("MENSJE",contactoB.toString());
                 Intent intent2 = new Intent(MyActivity2.this, Borrar.class);
                 intent2.putExtra("contactoB", contactoB);
+                startActivityForResult(intent2, 1);
 
             }
 
