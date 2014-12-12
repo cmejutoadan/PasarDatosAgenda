@@ -16,7 +16,10 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+//programa funcionando correctamente
+
 public class MyActivity extends Activity {
+
 
     public static ArrayList<Contacto> aContactos = new ArrayList<Contacto>();
     Contacto contacto;
